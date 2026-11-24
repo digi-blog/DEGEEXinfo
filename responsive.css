@@ -1,0 +1,257 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+
+body {
+  animation: page-arrive .65s ease both;
+}
+
+img,
+svg,
+video {
+  max-width: 100%;
+}
+
+img {
+  height: auto;
+}
+
+main,
+section,
+article,
+header,
+footer,
+figure,
+nav,
+div {
+  min-width: 0;
+}
+
+a,
+button,
+.tag-button,
+.mode-tags span,
+.stat,
+article {
+  transition: color .22s ease, background-color .22s ease, border-color .22s ease, box-shadow .22s ease, transform .22s ease;
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 4px;
+}
+
+@keyframes page-arrive {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.appear-on-scroll {
+  opacity: 0;
+  translate: 0 22px;
+  animation-play-state: paused !important;
+  transition:
+    opacity .65s ease var(--appear-delay, 0ms),
+    translate .65s cubic-bezier(.2, .7, .2, 1) var(--appear-delay, 0ms);
+}
+
+.appear-on-scroll.is-visible {
+  opacity: 1;
+  translate: 0 0;
+  animation-play-state: running !important;
+}
+
+@media (min-width: 1500px) {
+  .section-wrap,
+  .overview,
+  .design-inner,
+  .armament-inner,
+  .systems-inner,
+  .intro-section,
+  .feature-section,
+  .armament-section {
+    padding-left: clamp(8%, calc((100vw - 1500px) / 2 + 8%), 15%);
+    padding-right: clamp(8%, calc((100vw - 1500px) / 2 + 8%), 15%);
+  }
+}
+
+@media (max-width: 900px) {
+  .stats-row,
+  .feature-grid,
+  .system-cards,
+  .weapon-grid,
+  .mission-grid,
+  .armament-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .stats-row .stat {
+    padding: 18px;
+  }
+
+  .stats-row .stat:nth-child(2n) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 760px) {
+  .site-header,
+  .topbar {
+    height: auto;
+    min-height: 64px;
+    flex-wrap: wrap;
+    gap: 12px 18px;
+    padding: 12px clamp(16px, 5vw, 36px);
+  }
+
+  .site-header nav,
+  .topbar nav {
+    display: flex;
+    order: 3;
+    flex: 1 0 100%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px clamp(14px, 4vw, 28px);
+    margin: 0;
+  }
+
+  .site-header nav a,
+  .topbar nav a {
+    font-size: clamp(7px, 1.8vw, 9px);
+  }
+
+  .header-cta,
+  .top-cta {
+    margin-left: auto;
+  }
+
+  .overview-grid,
+  .intro-grid,
+  .heritage-grid,
+  .quick-specs-inner {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero-bottom,
+  .hero-meta,
+  .hero-actions {
+    flex-wrap: wrap;
+  }
+
+  .hero-meta > *,
+  .hero-actions > * {
+    min-width: 0;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    overflow-x: clip;
+  }
+
+  .hero-visual {
+    right: 0;
+    width: 100%;
+  }
+
+  .apache-photo {
+    left: 4.5%;
+    width: 91%;
+  }
+
+  .visual-caption {
+    left: 6%;
+    right: 6%;
+    flex-wrap: wrap;
+  }
+
+  .systems-heading h2 {
+    font-size: clamp(34px, 10vw, 46px);
+  }
+
+  .stats,
+  .stats-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feature-grid,
+  .system-cards,
+  .weapon-grid,
+  .mission-grid,
+  .armament-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .stats-row .stat {
+    min-width: 0;
+    padding: 15px 10px;
+  }
+
+  .stats-row .stat:nth-child(2n) {
+    border-right: 0;
+  }
+
+  .mission-card + .mission-card,
+  .armament-card:nth-child(even),
+  .spec-grid article:nth-child(even) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .site-header nav,
+  .topbar nav {
+    column-gap: 13px;
+  }
+
+  .hero-bottom {
+    gap: 8px 14px;
+  }
+
+  .social-links,
+  footer {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .site-header,
+  .topbar {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .stats,
+  .stats-row {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-height: 520px) and (min-width: 761px) {
+  .hero {
+    height: auto;
+    min-height: 620px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
